@@ -1,0 +1,657 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Seblak Zafa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap">
+<style>
+/* Layout: striped awning with sign on top, then one phone-width game column (max 520px): status chips, customer, work area. */
+:root{--bg:#e3f4ee;--card:#ffffff;--ink:#173038;--mut:#4d6870;--acc:#d63a2f;--onacc:#ffffff;--sun:#ffc43d;--ok:#1b8f5a;--onok:#ffffff;--bad:#c42b26;--line:#c2dfd5;--soft:#d2ebe2;--stripe:#ffffff;--fd:"Baloo 2",system-ui,sans-serif;--fb:"Nunito",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f2226;--card:#1a373f;--ink:#e9f6f1;--mut:#9fc1b9;--acc:#ff6a5c;--onacc:#2b0a07;--sun:#ffd166;--ok:#4ccf8f;--onok:#052a19;--bad:#ff8a84;--line:#2c5059;--soft:#244850;--stripe:#eadfca;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f2226;--card:#1a373f;--ink:#e9f6f1;--mut:#9fc1b9;--acc:#ff6a5c;--onacc:#2b0a07;--sun:#ffd166;--ok:#4ccf8f;--onok:#052a19;--bad:#ff8a84;--line:#2c5059;--soft:#244850;--stripe:#eadfca;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:600;font-size:16px;line-height:1.4;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 28px}
+#app{max-width:520px;margin:0 auto}
+h1,h2{font-family:var(--fd);font-weight:800;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:36px}h2{font-size:24px}
+p{margin:6px 0}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button[disabled]{cursor:default}
+.awn svg{display:block;width:100%;height:auto}
+.awn text{font-family:var(--fd)}
+.s0{fill:var(--acc)}.s1{fill:var(--stripe)}
+.dec{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:2px}
+.dec svg{width:42px;height:42px}
+svg{max-width:100%}
+.hero{text-align:center;margin:12px 0 8px}
+.pair{display:flex;justify-content:center;align-items:flex-end;gap:4px}
+.pair svg{width:72px;height:72px}
+.chips{display:flex;gap:8px;margin:10px 0}
+.chip{flex:1;min-width:0;background:var(--card);border:0;border-radius:14px;padding:6px 4px;text-align:center;font-family:var(--fd);font-weight:800;font-size:17px;line-height:1.25}
+.chip small{display:block;color:var(--mut);font-family:var(--fb);font-size:12px;font-weight:800}
+.chip svg{width:26px;height:26px;display:block;margin:0 auto}
+.cust{display:flex;gap:12px;align-items:center;margin:12px 0}
+.cust>svg{width:78px;height:78px;flex:none}
+.bub{position:relative;flex:1;min-width:0;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:10px 12px}
+.bub::before{content:"";position:absolute;left:-9px;top:28px;width:14px;height:14px;background:var(--card);border-left:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.box{background:var(--card);border-radius:16px;padding:10px;margin:10px 0}
+.row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:2px dashed var(--line)}
+.row:last-child{border:0}
+.row>svg{width:44px;height:44px;flex:none}
+.row .nm{flex:1;min-width:0}
+.row small{display:block;color:var(--mut);font-weight:800}
+.row .q{font-family:var(--fd);font-weight:800;font-size:24px;color:var(--acc)}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:12px 18px;background:var(--acc);color:var(--onacc);font-family:var(--fd);font-weight:800;font-size:19px;min-height:48px}
+.btn.ok{background:var(--ok);color:var(--onok)}
+.btn.alt{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+.btn[disabled]{opacity:.4}
+.btn,.mi,.bills button,.tc,.who button{transition:transform .08s}
+.btn:active,.mi:active,.bills button:active,.tc:active,.who button:active{transform:scale(.96)}
+.lnk{background:none;border:0;color:var(--acc);font-weight:800;text-decoration:underline;padding:8px;min-height:40px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who button{background:var(--card);border:3px solid var(--line);border-radius:16px;padding:8px;font-family:var(--fd);font-weight:800;font-size:18px;display:flex;flex-direction:column;align-items:center}
+.who button[aria-pressed="true"]{border-color:var(--acc);background:var(--soft)}
+.who svg{width:72px;height:72px}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 6px}
+.board div{text-align:center;font-size:12px;font-weight:800;min-width:0}
+.board svg{width:100%;max-width:52px;height:auto}
+.board small{display:block;color:var(--mut)}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 8px}
+.tabs button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:8px;font-family:var(--fd);font-weight:800;font-size:18px;min-height:44px}
+.tabs button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:#2b2100}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mi{position:relative;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;font-weight:800;font-size:12px;min-width:0;min-height:90px}
+.mi svg{width:50px;height:50px}
+.mi small{color:var(--mut);font-weight:800;font-size:11px}
+.mi .cnt{position:absolute;top:-7px;right:-4px;background:var(--acc);color:var(--onacc);border-radius:12px;min-width:24px;height:24px;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.tray{display:flex;flex-wrap:wrap;gap:6px;min-height:58px;padding:8px;background:var(--soft);border-radius:14px;align-items:center;margin-top:4px}
+.tc{display:flex;align-items:center;gap:2px;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:2px 8px 2px 2px;font-family:var(--fd);font-weight:800;font-size:18px}
+.tc svg{width:32px;height:32px}
+.empty{color:var(--mut);font-size:14px}
+.fb{color:var(--bad);font-weight:800;min-height:24px;margin:6px 0}
+.hint{background:var(--soft);border-radius:12px;padding:8px 10px;margin:8px 0;font-size:15px}
+.sum{text-align:center;font-family:var(--fd);font-weight:800;font-size:21px;margin:8px 0}
+.opts{display:grid;gap:8px;margin:8px 0}
+.bills{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.bills button{background:none;border:0;padding:0}
+.bl{display:block;width:100%}
+.gv{display:flex;flex-wrap:wrap;gap:4px;min-height:56px;background:var(--soft);border-radius:14px;padding:6px;align-items:center;margin-top:4px}
+.gv button{background:none;border:0;padding:0;width:84px}
+.stars{display:flex;justify-content:center;gap:4px;margin:8px 0}
+.stars svg{width:46px}
+.bar{height:10px;border-radius:6px;background:var(--bg);overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%}
+/* Adegan pembeli makan seblak */
+.scene{display:flex;justify-content:center;margin:6px 0 0}
+.scene svg{width:min(100%,320px);height:auto;display:block;border-radius:18px}
+.sbg{fill:var(--soft)}
+.sb{text-align:center;margin:8px 0;font-family:var(--fd);font-weight:800;font-size:19px}
+.sb::before{display:none}
+.scene .ab{transform-box:fill-box;transform-origin:center}
+.scene .head{transform-origin:50% 100%;animation:zidle 3s ease-in-out infinite}
+.scene .hand{transform-origin:50% 100%;opacity:0;transition:opacity .2s}
+.scene .hot{opacity:0;transition:opacity 1.2s}
+.scene .eyes{animation:zblink 4s infinite}
+.scene .bl,.scene .br{transition:transform .4s}
+.scene .m-open,.scene .m-chew,.scene .m-hot,.scene .m-grin{opacity:0}
+.scene .m-smile{opacity:1}
+.scene .sw,.scene .ste,.scene .tear{opacity:0}
+.scene .bowlg{animation:zbowl .5s ease-out both}
+.scene .bs{animation:zbs 2.6s ease-in-out infinite}
+.scene[data-stage="eat"] .m-smile,.scene[data-stage="pedas"] .m-smile,.scene[data-stage="makasih"] .m-smile{opacity:0}
+.scene[data-stage="eat"] .spoon{animation:zspoon 1.3s ease-in-out 2 both}
+.scene[data-stage="eat"] .bite{animation:zbite 1.3s linear 2 both}
+.scene[data-stage="eat"] .m-open{animation:zopen 1.3s linear 2 both}
+.scene[data-stage="eat"] .m-chew{animation:zchew 1.3s linear 2 both}
+.scene[data-stage="eat"] .cheek{animation:zcheek 1.3s linear 2 both}
+.scene[data-stage="pedas"] .m-hot{opacity:1;animation:zhah .25s ease-in-out infinite alternate}
+.scene[data-stage="pedas"] .hot{opacity:.5}
+.scene[data-stage="pedas"] .eyes{animation:zsquint .5s ease-in-out infinite alternate}
+.scene[data-stage="pedas"] .bl{transform:translateY(2px) rotate(-14deg)}
+.scene[data-stage="pedas"] .br{transform:translateY(2px) rotate(14deg)}
+.scene[data-stage="pedas"] .head{animation:zshake .12s linear infinite}
+.scene[data-stage="pedas"] .hand{opacity:1;animation:zfan .16s ease-in-out infinite alternate}
+.scene[data-stage="pedas"] .sw{animation:zdrip 1.1s ease-in infinite}
+.scene[data-stage="pedas"] .ste{animation:zsteam 1s ease-out infinite}
+.scene[data-stage="pedas"] .tear{animation:ztear 1.2s ease-in infinite}
+.scene[data-stage="makasih"] .m-grin{opacity:1}
+.scene[data-stage="makasih"] .hot{opacity:.14}
+.scene[data-stage="makasih"] .head{animation:znod 1.6s ease-in-out infinite}
+.scene[data-stage="makasih"] .hand{opacity:1;animation:zwave .5s ease-in-out infinite alternate}
+@keyframes zidle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes zblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes zsquint{from{transform:scaleY(.28)}to{transform:scaleY(.16)}}
+@keyframes zspoon{0%{transform:translateY(0)}12%{transform:translateY(6px)}34%{transform:translateY(-44px)}54%{transform:translateY(-44px)}72%,100%{transform:translateY(0)}}
+@keyframes zbite{0%,48%{opacity:1}50%,100%{opacity:0}}
+@keyframes zopen{0%,30%{opacity:0}38%,52%{opacity:1}58%,100%{opacity:0}}
+@keyframes zchew{0%,30%{opacity:1;transform:scaleY(1)}36%,54%{opacity:0}58%{opacity:1;transform:scaleY(1)}68%{transform:scaleY(.4)}78%{transform:scaleY(1)}88%{transform:scaleY(.4)}100%{opacity:1;transform:scaleY(1)}}
+@keyframes zcheek{0%,56%{transform:scale(1)}68%{transform:scale(1.3)}78%{transform:scale(1)}88%{transform:scale(1.3)}100%{transform:scale(1)}}
+@keyframes zhah{from{transform:scale(.92)}to{transform:scale(1.08)}}
+@keyframes zshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-1.5px)}75%{transform:translateX(1.5px)}}
+@keyframes zfan{from{transform:translate(-38px,-30px) rotate(-16deg)}to{transform:translate(-38px,-30px) rotate(16deg)}}
+@keyframes zdrip{0%{opacity:0;transform:translateY(-3px)}25%{opacity:1}100%{opacity:0;transform:translateY(24px)}}
+@keyframes zsteam{0%{opacity:0;transform:translateY(0) scale(.6)}30%{opacity:.85}100%{opacity:0;transform:translateY(-26px) scale(1.5)}}
+@keyframes ztear{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+@keyframes znod{0%,100%{transform:rotate(0)}40%{transform:rotate(5deg) translateY(2px)}}
+@keyframes zwave{from{transform:translate(8px,-40px) rotate(-14deg)}to{transform:translate(8px,-40px) rotate(14deg)}}
+@keyframes zbowl{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes zbs{0%{opacity:0;transform:translateY(0)}40%{opacity:.55}100%{opacity:0;transform:translateY(-16px)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.cook{background:var(--card);border-radius:16px;padding:12px;margin:10px 0;text-align:center}
+.cook .pot{width:110px;margin:0 auto;animation:zidle 1.2s ease-in-out infinite}
+.cdots{display:flex;justify-content:center;gap:8px;margin:8px 0}
+.cdots i{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.cdots i.on{background:var(--ok)}.cdots i.now{background:var(--sun)}
+.meter{position:relative;height:30px;border-radius:15px;background:var(--soft);margin:12px 4px;overflow:hidden}
+.meter b{position:absolute;left:35%;width:30%;top:0;bottom:0;background:var(--ok);opacity:.55}
+.meter span{position:absolute;top:0;bottom:0;width:8px;margin-left:-4px;background:var(--acc);border-radius:4px}
+/* === FULLSCREEN TANPA SCROLL === */
+:root{padding:0!important}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body{position:fixed;inset:0;width:100%;padding:env(safe-area-inset-top,0px) max(16px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(16px,env(safe-area-inset-left,0px))!important}
+#app{width:min(520px,100%);transform-origin:top center;will-change:transform}
+</style>
+<div id="app">
+  <div class="awn" id="awn"></div>
+  <div class="dec" id="dec"></div>
+  <div id="view"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s),rnd=n=>Math.floor(Math.random()*n),sum=a=>a.reduce((x,y)=>x+y,0),shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const fmt=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,"."),rp=v=>"Rp"+fmt(v),wd=v=>v>=1000?(v/1000)+" ribu rupiah":v+" rupiah";
+
+/* ---------- Menu (harga bisa diubah di sini) ---------- */
+const MENU=[
+{id:"seblak",n:"Seblak",p:5000,k:"makan"},{id:"kerupuk",n:"Kerupuk",p:1000,k:"makan"},
+{id:"makaroni",n:"Makaroni",p:2000,k:"makan"},{id:"sosis",n:"Sosis",p:2000,k:"makan"},
+{id:"jamur",n:"Jamur",p:3000,k:"makan"},{id:"bakso",n:"Bakso",p:3000,k:"makan"},
+{id:"ayam",n:"Ayam",p:4000,k:"makan"},{id:"mie",n:"Mie Ayam",p:6000,k:"makan"},
+{id:"esteh",n:"Es Teh",p:3000,k:"minum"},{id:"popice",n:"Pop Ice",p:4000,k:"minum"},
+{id:"esjeruk",n:"Es Jeruk",p:4000,k:"minum"},{id:"marimas",n:"Marimas",p:1000,k:"minum"}];
+const BY=Object.fromEntries(MENU.map(m=>[m.id,m]));
+
+/* ---------- Gambar ---------- */
+const V=b=>`<svg viewBox="0 0 64 64" aria-hidden="true">${b}</svg>`;
+const bowl=`<path d="M6 30h52c0 16-11 26-26 26S6 46 6 30z" fill="#f6f1e7"/><path d="M10 37h44" stroke="#3f7fbf" stroke-width="3"/><rect x="22" y="54" width="20" height="4" rx="2" fill="#d9cdb8"/>`;
+const mac=`<path d="M14 24q3-12 12-8"/><path d="M28 22q4-12 12-6"/><path d="M40 24q5-10 11-3"/><path d="M22 29q6-6 12-2"/>`;
+const ICON={
+seblak:V(`${bowl}<ellipse cx="32" cy="30" rx="26" ry="6.5" fill="#d9381e"/><path d="M12 30c3-6 6 3 10-2s6 3 10-1 6 3 10-2 6 3 9-1" stroke="#ffb74d" stroke-width="3.2" fill="none" stroke-linecap="round"/><rect x="18" y="25" width="7" height="4" rx="2" fill="#f2cf72" transform="rotate(-15 21 27)"/><rect x="38" y="24" width="7" height="4" rx="2" fill="#f2cf72" transform="rotate(12 41 26)"/><circle cx="30" cy="32" r="2" fill="#7a1010"/><circle cx="46" cy="31" r="1.8" fill="#7a1010"/><rect x="26" y="26" width="3" height="3" fill="#43a047"/><rect x="34" y="30" width="3" height="3" fill="#43a047"/>`),
+mie:V(`${bowl}<ellipse cx="32" cy="30" rx="26" ry="6.5" fill="#f4c542"/><path d="M10 30c3-5 6 3 10 0s6-4 10 0 6 4 10 0 6-4 10 0 6 3 8 0" stroke="#e6a817" stroke-width="2" fill="none"/><circle cx="24" cy="29" r="4" fill="#8d5a2b"/><circle cx="38" cy="28" r="4" fill="#a36a35"/><circle cx="31" cy="33" r="3" fill="#8d5a2b"/><rect x="44" y="28" width="3" height="5" fill="#43a047"/><rect x="15" y="29" width="3" height="5" fill="#43a047"/><path d="M50 4L34 27M54 6L38 28" stroke="#b07a3f" stroke-width="2.2" stroke-linecap="round"/>`),
+ayam:V(`<path d="M40 38l15 15" stroke="#f3e9d2" stroke-width="6" stroke-linecap="round"/><circle cx="57" cy="50" r="4" fill="#f3e9d2"/><circle cx="52" cy="57" r="4" fill="#f3e9d2"/><path d="M10 30C6 16 20 6 34 9s20 18 8 28-26 8-32-7z" fill="#d9822b"/><circle cx="22" cy="20" r="2" fill="#f0b45a"/><circle cx="33" cy="17" r="2" fill="#f0b45a"/><circle cx="30" cy="28" r="2" fill="#f0b45a"/><circle cx="18" cy="30" r="2" fill="#a85f17"/><circle cx="40" cy="26" r="2" fill="#a85f17"/>`),
+bakso:V(`${bowl}<ellipse cx="32" cy="30" rx="26" ry="6.5" fill="#e8c27b"/><circle cx="22" cy="27" r="7" fill="#9a6b4b"/><circle cx="36" cy="25" r="7.5" fill="#a97756"/><circle cx="46" cy="30" r="5.5" fill="#9a6b4b"/><circle cx="20" cy="25" r="2" fill="#c49a78"/><circle cx="34" cy="22.5" r="2" fill="#c9a07d"/><rect x="28" y="31" width="3" height="3" fill="#43a047"/>`),
+kerupuk:V(`<circle cx="24" cy="28" r="17" fill="#f7dc8f"/><circle cx="24" cy="28" r="17" fill="none" stroke="#e7b94f" stroke-width="2.5" stroke-dasharray="3 3"/><circle cx="42" cy="38" r="17" fill="#f9e3a6"/><circle cx="42" cy="38" r="17" fill="none" stroke="#e7b94f" stroke-width="2.5" stroke-dasharray="3 3"/><circle cx="18" cy="24" r="1.6" fill="#d9962e"/><circle cx="28" cy="32" r="1.6" fill="#d9962e"/><circle cx="36" cy="34" r="1.6" fill="#d9962e"/><circle cx="46" cy="42" r="1.6" fill="#d9962e"/><circle cx="40" cy="46" r="1.6" fill="#d9962e"/>`),
+jamur:V(`<rect x="24" y="32" width="16" height="22" rx="7" fill="#f1d7a0"/><path d="M6 36C6 16 20 8 32 8s26 8 26 28c0 4-6 4-26 4S6 40 6 36z" fill="#d89a3c"/><circle cx="20" cy="24" r="2.6" fill="#f0bf62"/><circle cx="34" cy="18" r="2.6" fill="#f0bf62"/><circle cx="44" cy="28" r="2.6" fill="#f0bf62"/><circle cx="28" cy="31" r="2" fill="#b9791f"/><circle cx="14" cy="32" r="2" fill="#b9791f"/><circle cx="50" cy="35" r="2" fill="#b9791f"/>`),
+makaroni:V(`<path d="M12 28h40l-6 30H18z" fill="#fff0cc" stroke="#e0c78a" stroke-width="1.5"/><path d="M12 28h40" stroke="#e4483c" stroke-width="4"/><g stroke="#e8742c" stroke-width="7" stroke-linecap="round" fill="none">${mac}</g><g stroke="#ffb37a" stroke-width="2.4" stroke-linecap="round" fill="none">${mac}</g><circle cx="20" cy="13" r="1.4" fill="#b71c1c"/><circle cx="36" cy="10" r="1.4" fill="#b71c1c"/><circle cx="48" cy="17" r="1.4" fill="#b71c1c"/>`),
+sosis:V(`<rect x="30" y="2" width="4" height="60" rx="2" fill="#c9a06b"/><rect x="21" y="6" width="22" height="24" rx="11" fill="#b5301f"/><rect x="21" y="33" width="22" height="24" rx="11" fill="#a52d1b"/><path d="M23 14h18M23 22h18M23 41h18M23 49h18" stroke="#5c140b" stroke-width="2.5"/><path d="M24 10q4 4 8 0t8 0" stroke="#ffd43b" stroke-width="2.5" fill="none"/>`),
+esteh:V(`<path d="M17 12h30l-3.5 46h-23z" fill="#e6f4f1" stroke="#a9c9c2" stroke-width="1.5"/><path d="M18 24h28l-2.4 34H20.4z" fill="#b5651d"/><rect x="24" y="30" width="10" height="10" rx="2" fill="#fff" opacity=".45" transform="rotate(-10 29 35)"/><rect x="33" y="43" width="9" height="9" rx="2" fill="#fff" opacity=".4"/><path d="M36 22L44 4" stroke="#e4483c" stroke-width="3.5" stroke-linecap="round"/>`),
+popice:V(`<path d="M16 22h32l-4 36H20z" fill="#ffd1e3"/><path d="M17.6 36h28.8l-2.4 22H20z" fill="#ff7fb0"/><circle cx="29" cy="46" r="3" fill="#fff" opacity=".5"/><circle cx="37" cy="50" r="2.4" fill="#fff" opacity=".5"/><path d="M15 22a17 12 0 0 1 34 0z" fill="#fff" opacity=".6" stroke="#cfd8dc"/><rect x="14" y="21" width="36" height="4" rx="2" fill="#e8eef0"/><path d="M33 12L41 2" stroke="#2f9e44" stroke-width="3.5" stroke-linecap="round"/>`),
+esjeruk:V(`<path d="M16 16h32l-3.5 42h-25z" fill="#fff1d1" stroke="#e5cf9f" stroke-width="1.5"/><path d="M17.4 26h29.2l-2.4 32H19.8z" fill="#ff9f1c"/><rect x="22" y="32" width="9" height="9" rx="2" fill="#fff" opacity=".45" transform="rotate(8 26 36)"/><rect x="32" y="44" width="8" height="8" rx="2" fill="#fff" opacity=".4"/><path d="M28 28L24 4" stroke="#2f9e44" stroke-width="3.5" stroke-linecap="round"/><circle cx="46" cy="16" r="10" fill="#ff8a00"/><circle cx="46" cy="16" r="7.5" fill="#ffc266"/><path d="M46 8.5v15M38.5 16h15M40.7 10.7l10.6 10.6M51.3 10.7L40.7 21.3" stroke="#fff" stroke-width="1" opacity=".8"/>`),
+marimas:V(`<rect x="16" y="8" width="32" height="48" rx="2" fill="#ff7a45"/><path d="M16 9h32M16 55h32" stroke="#ffd1b8" stroke-width="5" stroke-dasharray="3 2"/><circle cx="32" cy="28" r="11" fill="#fff"/><circle cx="32" cy="29" r="6.5" fill="#d9382e"/><path d="M32 22q3-5 7-4-1 5-7 4z" fill="#43a047"/><path d="M16 46q4-4 8 0t8 0 8 0 8 0" stroke="#ffd166" stroke-width="3" fill="none"/>`)};
+
+const SKIN=["#f1c27d","#e0ac69","#c68642","#8d5524"],HAIR=["#2b1b10","#171717","#4a2c17"],TOP=["#e4483c","#2b7fd1","#2f9e6b","#9b51c9","#f08c00","#0c8599"];
+function face(kind,i,mood){
+  const s=SKIN[i%4],h=HAIR[i%3],t=TOP[i%6],t2=TOP[(i+2)%6];
+  const eyes=`<circle cx="26" cy="34" r="2.3" fill="#222"/><circle cx="38" cy="34" r="2.3" fill="#222"/>`;
+  const mouth=mood==="sad"?`<path d="M27 44q5-5 10 0" stroke="#222" stroke-width="2" fill="none" stroke-linecap="round"/>`:`<path d="M26 40q6 7 12 0" stroke="#222" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+  const cheek=`<circle cx="21.5" cy="40" r="3" fill="#ff7a70" opacity=".3"/><circle cx="42.5" cy="40" r="3" fill="#ff7a70" opacity=".3"/>`;
+  let b="";
+  if(kind==="hijab"){
+    b=`<path d="M8 64c0-12 10-18 24-18s24 6 24 18z" fill="${t2}"/><path d="M9 62C7 36 12 10 32 10s25 26 23 52z" fill="${t}"/><ellipse cx="32" cy="35" rx="14" ry="16" fill="${s}"/><path d="M18 31a14 14 0 0 1 28 0c-6-4-22-4-28 0z" fill="${t}"/>${eyes}${cheek}${mouth}`;
+  }else if(kind==="girl"){
+    b=`<path d="M8 64c0-12 10-18 24-18s24 6 24 18z" fill="${t}"/><path d="M11 34C9 14 20 8 32 8s23 6 21 26v12q-5 4-9 0V30H20v16q-4 4-9 0z" fill="${h}"/><circle cx="32" cy="33" r="17" fill="${s}"/><path d="M15 29a17 17 0 0 1 34 0c-7-2-14-7-17-11-3 6-10 10-17 11z" fill="${h}"/>${eyes}${cheek}${mouth}`;
+  }else{
+    b=`<path d="M8 64c0-12 10-18 24-18s24 6 24 18z" fill="${t}"/><circle cx="32" cy="33" r="17" fill="${s}"/><path d="M14 30C13 16 22 10 32 10s19 6 18 20c-3-5-6-9-9-10-3 4-10 6-27 10z" fill="${h}"/>${eyes}${cheek}${mouth}`;
+  }
+  return V(b);
+}
+const BC={1000:"#4f93ab",2000:"#6f7f8c",5000:"#a8754c",10000:"#7d52a8",20000:"#3f9b5b",50000:"#2f80c4",100000:"#d9455f"};
+const bill=v=>`<svg class="bl" viewBox="0 0 120 56" role="img" aria-label="Uang ${rp(v)}"><rect width="120" height="56" rx="6" fill="${BC[v]}"/><rect x="4" y="4" width="112" height="48" rx="4" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/><circle cx="26" cy="28" r="14" fill="#fff" fill-opacity=".3"/><circle cx="26" cy="28" r="7" fill="#fff" fill-opacity=".35"/><text x="78" y="21" text-anchor="middle" font-size="9" fill="#fff" font-weight="800" font-family="sans-serif">RUPIAH</text><text x="78" y="41" text-anchor="middle" font-size="13" fill="#fff" font-weight="800" font-family="sans-serif">${rp(v)}</text></svg>`;
+const star=on=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z" fill="${on?"#f5b301":"#b9c9c3"}"/></svg>`;
+
+const SHOP=[{id:"lampu",n:"Lampu hias",p:20000},{id:"tanam",n:"Tanaman",p:30000},{id:"spanduk",n:"Spanduk",p:40000},{id:"papan",n:"Papan nama",p:50000},{id:"kucing",n:"Kucing penjaga",p:70000},{id:"payung",n:"Payung besar",p:90000}];
+const DI={
+lampu:V(`<path d="M4 14q28 22 56 0" stroke="#3b2412" stroke-width="2" fill="none"/><circle cx="14" cy="24" r="6" fill="#ffd43b"/><circle cx="32" cy="31" r="6" fill="#ff8787"/><circle cx="50" cy="24" r="6" fill="#69db7c"/>`),
+tanam:V(`<path d="M20 40h24l-4 20H24z" fill="#c2410c"/><path d="M32 40V16" stroke="#2f9e44" stroke-width="3"/><path d="M32 32c-10 0-14-8-14-14 10 0 14 6 14 14zM32 26c10 0 14-8 14-14-10 0-14 6-14 14z" fill="#40c057"/>`),
+spanduk:V(`<path d="M3 10h58" stroke="#3b2412" stroke-width="2"/><path d="M6 10h10l-5 18zM20 10h10l-5 18zM34 10h10l-5 18zM48 10h10l-5 18z" fill="#e03131"/><path d="M20 10h10l-5 18zM48 10h10l-5 18z" fill="#fab005"/>`),
+papan:V(`<rect x="8" y="10" width="48" height="30" rx="5" fill="#fff" stroke="#3b2412" stroke-width="3"/><path d="M16 21h32M16 31h20" stroke="#e8590c" stroke-width="3"/><rect x="29" y="40" width="6" height="20" fill="#8d5a2b"/>`),
+kucing:V(`<ellipse cx="32" cy="46" rx="18" ry="14" fill="#ffa94d"/><circle cx="32" cy="27" r="13" fill="#ffa94d"/><path d="M21 18l3 9-9-1zM43 18l-3 9 9-1z" fill="#ffa94d"/><circle cx="27" cy="27" r="2" fill="#222"/><circle cx="37" cy="27" r="2" fill="#222"/><path d="M29 32q3 3 6 0" stroke="#222" stroke-width="2" fill="none"/>`),
+payung:V(`<path d="M5 32a27 27 0 0 1 54 0z" fill="#e03131"/><path d="M19 32a13 13 0 0 1 13-13 13 13 0 0 1 13 13" fill="#fff" opacity=".5"/><path d="M32 32v26" stroke="#3b2412" stroke-width="3"/>`)};
+
+let a="";for(let i=0;i<10;i++)a+=`<path d="M${i*52} 0h52v34a26 20 0 0 1-52 0z" class="${i%2?"s1":"s0"}"/>`;
+$("#awn").innerHTML=`<svg viewBox="0 0 520 64" role="img" aria-label="Seblak Zafa">${a}<rect x="140" y="10" width="240" height="38" rx="10" fill="#7a4e27" stroke="#4d2f14" stroke-width="3"/><text x="260" y="38" text-anchor="middle" font-size="24" font-weight="800" fill="#fff3d9">SEBLAK ZAFA</text></svg>`;
+
+/* ---------- Simpan ---------- */
+const fresh=()=>({day:1,story:0,stock:{kerupuk:3,makaroni:3,sosis:3,jamur:3,bakso:3,ayam:3,mie:3},tab:0,own:[],stars:{},st:{ambil:{b:0,s:0},total:{b:0,s:0},kembali:{b:0,s:0}},who:"boy",mute:false});
+let S=fresh(),view="home",G=null,ask=false;
+const KEY="warung_zafa_v2";
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function load(){try{
+  const o=JSON.parse(localStorage.getItem(KEY)||"null");if(!o||typeof o!=="object")return;
+  if(Number.isInteger(o.day)&&o.day>0&&o.day<1000)S.day=o.day;
+  if(Number.isInteger(o.tab)&&o.tab>=0&&o.tab<1e7)S.tab=o.tab;
+  if(Array.isArray(o.own))S.own=SHOP.map(x=>x.id).filter(id=>o.own.includes(id));
+  if(o.stars&&typeof o.stars==="object")for(const k in o.stars){const d=+k,v=+o.stars[k];if(Number.isInteger(d)&&d>0&&d<1000&&v>=1&&v<=3)S.stars[d]=v}
+  if(o.st&&typeof o.st==="object")for(const k of ["ambil","total","kembali"]){const e=o.st[k];if(e&&Number.isInteger(e.b)&&Number.isInteger(e.s)&&e.b>=0&&e.s>=0)S.st[k]={b:e.b,s:e.s}}
+  if(o.who==="boy"||o.who==="girl")S.who=o.who;
+  if(Number.isInteger(o.story)&&o.story>=0&&o.story<1000)S.story=o.story;
+  if(o.stock&&typeof o.stock==="object")SI.forEach(id=>{const v=+o.stock[id];if(Number.isInteger(v)&&v>0&&v<1000)S.stock[id]=v});
+  if(typeof o.mute==="boolean")S.mute=o.mute;
+}catch(e){}}
+function rec(k,ok){S.st[k][ok?"b":"s"]++;save()}
+
+/* ---------- Suara ---------- */
+let AC=null;
+function tone(fr,d,t,v,w){if(S.mute)return;w=w||0;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+w;o.type=t||"sine";o.frequency.setValueAtTime(fr,s);g.gain.setValueAtTime(v||.15,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const SFX={tap:()=>tone(520,.07,"triangle",.12),coin:()=>{tone(1318,.08,"square",.07);tone(1760,.18,"square",.07,.07)},ok:()=>{tone(660,.12,"sine",.15);tone(880,.2,"sine",.15,.1)},bad:()=>{tone(220,.25,"sawtooth",.08);tone(165,.3,"sawtooth",.08,.15)},win:()=>[523,659,784,1047].forEach((x,i)=>tone(x,.22,"triangle",.16,i*.1))};
+const CANSAY="speechSynthesis" in window;
+function say(t){try{const s=window.speechSynthesis;if(!s||!t)return;s.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="id-ID";u.rate=.9;const v=(s.getVoices()||[]).find(x=>/^id/i.test(x.lang));if(v)u.voice=v;s.speak(u)}catch(e){}}
+
+/* ---------- Permainan ---------- */
+function mkOpts(t){const s=new Set([t]);let k=0;while(s.size<3&&k++<60){const d=(1+rnd(3))*1000*(Math.random()<.5?-1:1);if(t+d>0)s.add(t+d)}return shuf([...s])}
+function newCust(){
+  const d=S.day,maxK=Math.min(2+Math.floor((d-1)/3),4),maxQ=Math.min(1+Math.floor(d/2),4),cap=Math.min(15000+d*5000,60000);
+  let items,total,t=0;
+  const SB=BY.seblak,others=MENU.filter(m=>m.id!=="seblak"&&(m.k==="minum"||(S.stock[m.id]||0)>0));
+  do{const pool=shuf(others).slice(0,d<2?rnd(2):1+rnd(maxK-1));items=[SB,...pool].map(m=>({m,q:Math.min(1+rnd(maxQ),m.id==="seblak"||m.k==="minum"?9:S.stock[m.id]||0)}));total=sum(items.map(x=>x.q*x.m.p))}while(total>cap&&t++<300);
+  if(total>cap){items=[{m:SB,q:1}];total=SB.p}
+  const ok=[2000,5000,10000,20000,50000,100000].filter(b=>b>=total),pay=ok[Math.random()<.7?0:rnd(Math.min(ok.length,3))];
+  G.c={face:{k:["boy","girl"][rnd(2)],i:rnd(12)},items,total,pay,change:pay-total,phase:"ambil",err:0,tray:{},given:[],hint:0,wrong:[],opts:null,fb:"",say:"Halo Kak! Aku mau beli seblak. Ini pesananku ya."};
+}
+function begin(){if(STORY[S.day]&&S.story<S.day){ST={i:0};S.story=S.day;save();view="story";render();window.scrollTo(0,0);return}beginDay()}
+function beginDay(){G={n:0,N:6,good:0,kas:0,tabm:(G&&G.tabm)||"makan",stars:0};newCust();view="play";render();window.scrollTo(0,0)}
+function fin(msg){const c=G.c;c.phase="selesai";c.say=msg;c.fb="";if(!c.err)G.good++;G.kas+=c.total+(c.tip||0);SFX.win()}
+function endDay(){
+  const g=G.good,st=g>=6?3:g>=5?2:g>=4?1:0;G.stars=st;
+  if(st>0){S.tab+=G.kas;S.stars[S.day]=Math.max(S.stars[S.day]||0,st);save();SFX.win()}else SFX.bad();
+  view="end";render();window.scrollTo(0,0);
+}
+function readText(){
+  const c=G.c,list=c.items.map(x=>x.q+" "+x.m.n).join(", ");
+  if(c.phase==="ambil")return "Aku mau beli "+list+".";
+  if(c.phase==="total")return "Berapa total semuanya? "+c.items.map(x=>x.q+" "+x.m.n+", harga satuan "+wd(x.m.p)).join(". ");
+  if(c.phase==="kembali")return "Total "+wd(c.total)+". Aku bayar "+wd(c.pay)+". Berapa kembaliannya?";
+  return c.say;
+}
+
+const ACT={
+  who(v){S.who=v;save();SFX.tap();render()},
+  mute(){S.mute=!S.mute;save();SFX.tap();render()},
+  home(){view="home";ask=false;SFX.tap();render();window.scrollTo(0,0)},
+  shop(){view="shop";SFX.tap();render();window.scrollTo(0,0)},
+  lap(){view="lap";ask=false;SFX.tap();render();window.scrollTo(0,0)},
+  play(){SFX.tap();begin()},
+  nextday(){S.day++;save();SFX.tap();beliInit()},
+  dapur(){G=G||{};G.c={phase:"masak",ck:{s:0,pos:0,d:1,t:0,msg:"",steps:[["Tumis bumbu","Tumis bawang &amp; cabai sampai wangi"],["Rebus kuah","Masukkan kerupuk &amp; topping ke kuah"],["Tambah pedas","Taburkan cabai biar nendang"],["Aduk minuman","Ketuk 6 kali untuk mengaduk"]]}};view="dapur";SFX.tap();render();window.scrollTo(0,0)},
+  badd(v){if(sum(Object.values(B.bag))>=20)return;B.bag[v]=(B.bag[v]||0)+1;B.fb="";SFX.tap();render()},
+  brem(v){if(B.bag[v])B.bag[v]--;B.fb="";SFX.tap();render()},
+  lewat(){SFX.tap();begin()},
+  bayar(){
+    const d=[];B.need.forEach(x=>{const h=B.bag[x.m.id]||0;if(h<x.q)d.push(`Masih kurang ${x.q-h} ${x.m.n}.`);if(h>x.q)d.push(`${x.m.n} kelebihan ${h-x.q}.`)});
+    Object.keys(B.bag).forEach(k=>{if(B.bag[k]>0&&!B.need.some(x=>x.m.id===k))d.push(`${BY[k].n} tidak ada di daftar.`)});
+    if(d.length){B.fb=d.join(" ");SFX.bad();render();return}
+    const cost=B.need.reduce((a,x)=>a+x.q*x.m.p/2,0);S.tab=Math.max(0,S.tab-cost);save();SFX.coin();SFX.win();begin()
+  },
+  read(){say(readText())},
+  tabm(v){G.tabm=v;SFX.tap();render()},
+  add(v){const c=G.c;if(c.phase!=="ambil"||sum(Object.values(c.tray))>=20)return;c.tray[v]=(c.tray[v]||0)+1;c.fb="";SFX.tap();render()},
+  rem(v){const c=G.c;if(c.tray[v])c.tray[v]--;c.fb="";SFX.tap();render()},
+  serve(){
+    const c=G.c,d=[];
+    MENU.forEach(m=>{const need=(c.items.find(x=>x.m.id===m.id)||{q:0}).q,have=c.tray[m.id]||0;if(have<need)d.push(`Masih kurang ${need-have} ${m.n}.`);if(have>need)d.push(`${m.n} kelebihan ${have-need}.`)});
+    if(!d.length){rec("ambil",true);c.items.forEach(x=>{if(S.stock[x.m.id])S.stock[x.m.id]=Math.max(0,S.stock[x.m.id]-x.q)});save();c.phase="masak";c.say="Sebentar ya, aku masakkan dulu!";c.fb="";c.ck={s:0,pos:0,d:1,t:0,msg:"",steps:[["Tumis bumbu","Tumis bawang &amp; cabai sampai wangi"],["Rebus kuah","Masukkan kerupuk &amp; topping ke kuah"],["Tambah pedas","Taburkan cabai biar nendang"]].concat(c.items.some(x=>x.m.k==="minum")?[["Aduk minuman","Ketuk 6 kali untuk mengaduk"]]:[])};SFX.ok()}
+    else{rec("ambil",false);c.err++;c.fb=d.join(" ");SFX.bad()}
+    render();
+  },
+  cook(){
+    const c=G.c,k=c.ck,drink=k.s===3;
+    if(drink){k.t++;SFX.tap();if(k.t>=6){k.s++;k.t=0;k.msg="";k.q=null;k.qd=false;SFX.ok()}render();return}
+    if(k.pos>=35&&k.pos<=65){k.s++;k.msg="Pas! Mantap!";SFX.ok();k.pos=0;k.q=null;k.qd=false}else{k.msg="Meleset, coba lagi!";k.miss=(k.miss||0)+1;SFX.bad()}
+    render();
+  },
+  eng(v){const k=G.c.ck;if(v===k.q.a){k.qd=true;k.msg="Correct! ✔ "+k.q.a+" = "+k.q.id;SFX.ok();say2(k.q.a)}else{k.msg="Not yet. Try again!";SFX.bad()}render()},
+  lanjut(){if(view==="dapur"){ACT.dapur();return}const c=G.c;{const m=c.ck.miss||0;c.tip=m===0?2000:m<=2?1000:0}c.phase="total";c.opts=mkOpts(c.total);c.say="Terima kasih! Berapa semuanya, Kak?";c.fb="";SFX.ok();render()},
+  hint(){const c=G.c;c.hint=Math.min(2,c.hint+1);SFX.tap();render()},
+  pick(v){
+    const c=G.c;v=+v;
+    if(v===c.total){rec("total",true);c.fb="";
+      if(!c.change)fin("Uang pas! Terima kasih, Kak.");
+      else{c.phase="kembali";c.say="Ini uangnya ya. Jangan lupa kembaliannya!";SFX.ok()}}
+    else{rec("total",false);c.err++;c.wrong.push(v);c.hint=Math.min(2,c.hint+1);c.fb="Belum tepat. Coba hitung lagi.";SFX.bad()}
+    render();
+  },
+  giv(v){const c=G.c;if(c.given.length<30)c.given.push(+v);c.fb="";SFX.coin();render()},
+  take(v){G.c.given.splice(+v,1);G.c.fb="";SFX.tap();render()},
+  clr(){G.c.given=[];G.c.fb="";SFX.tap();render()},
+  done(){
+    const c=G.c,s=sum(c.given);
+    if(s===c.change){rec("kembali",true);fin(`Betul! ${rp(c.total)} + ${rp(c.change)} = ${rp(c.pay)}. Terima kasih!`)}
+    else{rec("kembali",false);c.err++;c.hint=1;c.fb=s<c.change?`Masih kurang ${rp(c.change-s)}.`:`Kelebihan ${rp(s-c.change)}.`;SFX.bad()}
+    render();
+  },
+  next(){G.n++;SFX.tap();if(G.n>=G.N){endDay();return}newCust();render();window.scrollTo(0,0)},
+  buy(v){const x=SHOP.find(y=>y.id===v);if(!x||S.own.includes(v)||S.tab<x.p){SFX.bad();return}S.tab-=x.p;S.own.push(v);save();SFX.coin();SFX.win();render()},
+  reset1(){ask=true;SFX.tap();render()},
+  reset2(){S=fresh();save();ask=false;view="home";SFX.tap();render();window.scrollTo(0,0)},
+  no(){ask=false;render()}
+};
+$("#view").addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b||b.disabled)return;
+  if(b.dataset.act!=="read"){try{window.speechSynthesis&&window.speechSynthesis.cancel()}catch(x){}}
+  const f=ACT[b.dataset.act];if(f)f(b.dataset.v);
+});
+
+/* ---------- Tampilan ---------- */
+/* ---------- Adegan pembeli makan seblak ---------- */
+const sh=(hx,a)=>{const n=parseInt(hx.slice(1),16),f=c=>Math.max(0,Math.min(255,Math.round(a>0?c+(255-c)*a:c*(1+a))));return "#"+[(n>>16)&255,(n>>8)&255,n&255].map(f).map(x=>x.toString(16).padStart(2,"0")).join("")};
+let SC_T=[];
+function stopScene(){SC_T.forEach(clearTimeout);SC_T=[]}
+function startScene(){
+  const el=$("#scene"),b=$("#sbub");if(!el||!b)return;
+  const at=(ms,fn)=>SC_T.push(setTimeout(fn,ms)),go=(s,t)=>{el.dataset.stage=s;b.textContent=t};
+  at(1300,()=>go("eat","Hmm, nyam nyam... enak banget!"));
+  at(1800,()=>SFX.tap());at(3100,()=>SFX.tap());
+  at(4100,()=>{go("pedas","Huuh, hah! Pedas banget!");tone(420,.14,"sawtooth",.05);tone(340,.18,"sawtooth",.05,.16)});
+  at(6800,()=>{go("makasih","Makasih ya, Kak! Seblaknya enak.");SFX.ok()});
+}
+function sceneH(c){
+  const k=c.face.k,i=c.face.i,s=SKIN[i%4],h=HAIR[i%3],t=TOP[i%6],sd=sh(s,-.2),sl=sh(s,.18),girl=k==="girl";
+  const back=girl?`<path d="M74 96C66 48 92 30 120 30s54 18 46 66l4 54q-24 10-36-6H106q-12 16-36 6z" fill="${h}"/>`:"";
+  const ears=girl?"":`<circle cx="79" cy="92" r="8" fill="${sd}"/><circle cx="161" cy="92" r="8" fill="${sd}"/>`;
+  const hair=girl?`<path d="M80 80C84 52 100 44 120 44s36 8 40 36c-10-4-22-14-28-24-8 14-22 22-52 24z" fill="${h}"/>`:`<path d="M79 86C74 52 96 38 120 38s46 14 41 48c-5-10-10-18-18-26-8 8-30 10-58 14z" fill="${h}"/>`;
+  const eye=x=>`<ellipse cx="${x}" cy="86" rx="8" ry="6" fill="#fff"/><circle cx="${x}" cy="86.5" r="4.2" fill="#4a2c17"/><circle cx="${x}" cy="86.5" r="2.1" fill="#000"/><circle cx="${x+1.5}" cy="85" r="1.2" fill="#fff"/>`;
+  const drop=(x,y,d)=>`<g transform="translate(${x},${y})"><path class="sw" style="animation-delay:${d}s" d="M0-6C4 0 5 4 0 6C-5 4-4 0 0-6z" fill="#8fd3ff"/></g>`;
+  const puff=(x,d)=>`<g class="ste ab" style="animation-delay:${d}s"><circle cx="${x}" cy="80" r="7" fill="#e8eef1"/><circle cx="${x+(x<120?-6:6)}" cy="73" r="5" fill="#e8eef1"/></g>`;
+  const svg=`<svg viewBox="0 0 240 220" role="img" aria-label="Pembeli menikmati seblak">
+<defs><radialGradient id="sk" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="${sl}"/><stop offset=".6" stop-color="${s}"/><stop offset="1" stop-color="${sd}"/></radialGradient><clipPath id="above"><rect x="0" y="0" width="240" height="196"/></clipPath></defs>
+<rect class="sbg" width="240" height="220" rx="18"/>
+<path d="M34 196C34 150 70 138 120 138S206 150 206 196z" fill="${t}"/>
+${back}
+<rect x="107" y="120" width="26" height="28" fill="${sd}"/>
+<path d="M100 140q20 20 40 0" fill="none" stroke="${sh(t,-.25)}" stroke-width="4" stroke-linecap="round"/>
+<g class="head ab">
+${ears}
+<ellipse cx="120" cy="90" rx="40" ry="45" fill="url(#sk)"/>
+<ellipse class="hot" cx="120" cy="90" rx="40" ry="45" fill="#ff2d20"/>
+${hair}
+<ellipse class="cheek ab" cx="95" cy="104" rx="8" ry="5" fill="#ff7a70" opacity=".28"/><ellipse class="cheek ab" cx="145" cy="104" rx="8" ry="5" fill="#ff7a70" opacity=".28"/>
+<path d="M120 90q-5 10-2 13 3 2 7-1" fill="none" stroke="${sd}" stroke-width="2" stroke-linecap="round"/>
+<g class="eyes ab">${eye(104)}${eye(136)}<path d="M95.500 84q8.500-7 17 0M127.500 84q8.500-7 17 0" stroke="#2b1b10" stroke-width="2.200" fill="none" stroke-linecap="round"/></g>
+<path class="bl ab" d="M95 76q9-5 18-1" stroke="${h}" stroke-width="3.400" fill="none" stroke-linecap="round"/><path class="br ab" d="M127 75q9-4 18 1" stroke="${h}" stroke-width="3.400" fill="none" stroke-linecap="round"/>
+<ellipse class="tear" cx="98" cy="95" rx="2" ry="3" fill="#9bdcff"/><ellipse class="tear" cx="142" cy="95" rx="2" ry="3" fill="#9bdcff" style="animation-delay:.4s"/>
+<path class="m-smile" d="M106 109q14 11 28 0" stroke="#8a3b3b" stroke-width="2.600" fill="none" stroke-linecap="round"/>
+<g class="m-grin"><path d="M103 107q17 20 34 0z" fill="#7a2323"/><path d="M106 108h28q-2 4-14 4t-14-4z" fill="#fff"/></g>
+<g class="m-open"><ellipse cx="120" cy="114" rx="10" ry="8" fill="#6b1d1d"/><ellipse cx="120" cy="118.500" rx="6" ry="3.500" fill="#e2736f"/></g>
+<path class="m-chew ab" d="M108 111q12 5 24 0" stroke="#8a3b3b" stroke-width="2.800" fill="none" stroke-linecap="round"/>
+<g class="m-hot ab"><path d="M103 107q17-3 34 0q-1 22-17 22t-17-22z" fill="#5a1414"/><path d="M104 108q16-3 32 0v3q-16-3-32 0z" fill="#fff"/><path d="M109 121q11 14 22 0q-11 4-22 0z" fill="#ef6a75"/></g>
+${drop(86,62,0)}${drop(156,58,.35)}${drop(104,50,.7)}
+</g>
+${puff(70,0)}${puff(170,.4)}
+<rect x="0" y="190" width="240" height="16" fill="#c9915a"/><rect x="0" y="206" width="240" height="14" fill="#8a5a2f"/><rect x="0" y="190" width="240" height="2" fill="#e0b27c"/>
+<g class="bowlg">
+<ellipse cx="120" cy="176" rx="47" ry="10" fill="#f6f1e7"/><ellipse cx="120" cy="177" rx="42" ry="8" fill="#d9381e"/>
+<path d="M88 177c4-6 8 4 12-1s8 3 12-1 8 3 12-1 8 3 12-1 8 3 12-1" stroke="#ffb74d" stroke-width="3" fill="none" stroke-linecap="round"/>
+<rect x="96" y="172" width="9" height="4" rx="2" fill="#f2cf72" transform="rotate(-12 100 174)"/><rect x="136" y="173" width="9" height="4" rx="2" fill="#f2cf72" transform="rotate(10 140 175)"/><circle cx="130" cy="179" r="2" fill="#7a1010"/><circle cx="104" cy="180" r="1.800" fill="#7a1010"/><rect x="116" y="173" width="3" height="3" fill="#43a047"/>
+<g clip-path="url(#above)"><g class="spoon ab">
+<path d="M42 266L56 186" stroke="${sh(t,-.25)}" stroke-width="15" stroke-linecap="round" fill="none"/>
+<path d="M122 174L64 178" stroke="#aeb7bf" stroke-width="4.500" stroke-linecap="round"/><rect x="48" y="171" width="22" height="17" rx="8" fill="${s}"/><ellipse cx="62" cy="172" rx="8" ry="4.500" fill="${s}"/>
+<ellipse cx="120" cy="168" rx="10" ry="12" fill="#cfd6dc"/><ellipse cx="120" cy="167" rx="7.500" ry="9.500" fill="#e9eef1"/>
+<g class="bite ab"><ellipse cx="120" cy="165" rx="6.500" ry="5" fill="#d9381e"/><path d="M114 165q3-5 6 0t6 0" stroke="#ffb74d" stroke-width="2.200" fill="none" stroke-linecap="round"/></g>
+</g></g>
+<path d="M73 176c0 20 18 30 47 30s47-10 47-30c-8 8-26 12-47 12s-39-4-47-12z" fill="#f6f1e7"/>
+<path d="M78 192q42 12 84 0" stroke="#3f7fbf" stroke-width="3.500" fill="none"/>
+<g stroke="#fff" stroke-width="2.500" fill="none" stroke-linecap="round"><path class="bs ab" d="M104 164q-5-8 0-14" style="animation-delay:0s"/><path class="bs ab" d="M120 162q-5-8 0-14" style="animation-delay:.8s"/><path class="bs ab" d="M136 164q-5-8 0-14" style="animation-delay:1.600s"/></g>
+</g>
+<g class="hand ab"><rect x="174" y="138" width="24" height="26" rx="10" fill="${s}"/><rect x="174" y="119" width="6" height="26" rx="3" fill="${s}"/><rect x="181" y="115" width="6" height="28" rx="3" fill="${s}"/><rect x="188" y="116" width="6" height="27" rx="3" fill="${s}"/><rect x="195" y="121" width="5" height="23" rx="2.500" fill="${s}"/><rect x="170" y="141" width="6" height="16" rx="3" fill="${s}" transform="rotate(-30 173 149)"/><rect x="176" y="160" width="20" height="30" rx="9" fill="${t}"/></g>
+</svg>`;
+  return `<div class="scene" id="scene" data-stage="terima">${svg}</div><div class="bub sb" id="sbub" aria-live="polite">Wah, seblaknya sudah datang!</div>`;
+}
+function homeH(){
+  return `<div class="hero"><div class="pair">${face("boy",1,"happy")}${ICON.seblak}${face("girl",0,"happy")}</div><h1>Seblak Zafa</h1><p>Jual seblak dengan topping dan es segar. Layani pembeli, hitung totalnya, lalu beri kembalian.</p></div>
+<div class="box"><b>Daftar harga</b><div class="board" style="margin-top:8px">${MENU.map(m=>`<div>${ICON[m.id]}<b>${m.n}</b><small>${rp(m.p)}</small></div>`).join("")}</div></div>
+<div style="height:14px"></div>
+<button class="btn" data-act="play">${S.day>1?"Lanjut Hari "+S.day:"Buka Warung"}</button>
+<div class="two" style="margin-top:8px"><button class="btn ok" data-act="pasar">Market 🛒</button><button class="btn ok" data-act="dapur">Cook 🍜</button></div>
+
+<div style="text-align:center"><button class="lnk" data-act="mute">Suara: ${S.mute?"mati":"nyala"}</button></div>`;
+}
+function playH(){
+  const c=G.c,mood=c.phase==="selesai"?"happy":c.err>1?"sad":"happy";
+  let h=`<div class="chips"><div class="chip"><small>Hari</small>${S.day}</div><div class="chip"><small>Pelanggan</small>${Math.min(G.n+1,G.N)}/${G.N}</div><div class="chip" style="flex:1.5"><small>Uang kas</small>${rp(G.kas)}</div><button class="chip" data-act="home" aria-label="Kembali ke menu utama" style="background:var(--acc);color:var(--onacc)">‹ Kembali</button></div>`;
+  h+=c.phase==="selesai"?sceneH(c):`<div class="cust">${face(c.face.k,c.face.i,mood)}<div class="bub">${c.say}</div></div>`;
+  if(CANSAY&&c.phase!=="selesai")h+=`<div style="text-align:center"><button class="lnk" data-act="read">Bacakan soal</button></div>`;
+  if(c.phase==="ambil"){
+    h+=`<div class="box"><b>Pesanan pembeli</b>${c.items.map(x=>`<div class="row">${ICON[x.m.id]}<div class="nm"><b>${x.m.n}</b></div><div class="q">× ${x.q}</div></div>`).join("")}</div>`;
+    const ks=Object.keys(c.tray).filter(k=>c.tray[k]>0);
+    h+=`<b>Nampan</b><div class="tray">${ks.map(k=>`<button class="tc" data-act="rem" data-v="${k}" aria-label="Ambil kembali satu ${BY[k].n}">${ICON[k]}<span>× ${c.tray[k]}</span></button>`).join("")||`<span class="empty">Ketuk menu di bawah untuk mengambil pesanan.</span>`}</div>`;
+    h+=`<div class="tabs"><button data-act="tabm" data-v="makan" aria-pressed="${G.tabm==="makan"}">Seblak &amp; Topping</button><button data-act="tabm" data-v="minum" aria-pressed="${G.tabm==="minum"}">Minuman</button></div>`;
+    h+=`<div class="menu">${MENU.filter(m=>m.k===G.tabm).map(m=>`<button class="mi" data-act="add" data-v="${m.id}">${c.tray[m.id]?`<span class="cnt">${c.tray[m.id]}</span>`:""}${ICON[m.id]}${m.n}<small>${rp(m.p)}${SI.includes(m.id)?" · stok "+(S.stock[m.id]||0):""}</small></button>`).join("")}</div>`;
+    h+=`<div class="fb" role="status">${c.fb}</div><button class="btn ok" data-act="serve">Mulai masak</button>`;
+  }else if(c.phase==="ulek"){h+=ulekH(c);}else if(c.phase==="masak"){
+    h+=cookH(c);
+  }else if(c.phase==="total"){
+    h+=`<div class="box">${c.items.map(x=>`<div class="row">${ICON[x.m.id]}<div class="nm"><b>${x.m.n}</b><small>${x.q} × ${rp(x.m.p)}${c.hint>=1?" = "+rp(x.q*x.m.p):""}</small></div></div>`).join("")}</div>`;
+    h+=`<div class="sum">Berapa total semuanya?</div>`;
+    if(c.hint===1)h+=`<div class="hint"><b>Bantuan:</b> hitung tiap barang dulu. Jumlah barang × harga satuan.</div>`;
+    if(c.hint>=2)h+=`<div class="hint"><b>Bantuan:</b> sekarang jumlahkan semuanya.<br>${c.items.map(x=>fmt(x.q*x.m.p)).join(" + ")} = ?</div>`;
+    h+=`<div class="opts">${c.opts.map(v=>`<button class="btn alt" data-act="pick" data-v="${v}" ${c.wrong.includes(v)?"disabled":""}>${rp(v)}</button>`).join("")}</div><div class="fb" role="status">${c.fb}</div>`;
+    if(c.hint<2)h+=`<div style="text-align:center"><button class="lnk" data-act="hint">Minta bantuan</button></div>`;
+  }else if(c.phase==="kembali"){
+    const g=sum(c.given);
+    h+=`<div class="box" style="text-align:center"><div class="sum" style="margin-top:0">Total ${rp(c.total)}</div><div style="width:150px;margin:0 auto">${bill(c.pay)}</div><div class="sum" style="font-size:17px">Pembeli membayar ${rp(c.pay)}</div><div>Hitung maju: tambahkan uang dari laci sampai jumlahnya ${rp(c.pay)}.</div></div>`;
+    if(c.hint)h+=`<div class="hint"><b>Bantuan:</b> mulai dari ${rp(c.total)}. Tambah uang sedikit demi sedikit sampai ${rp(c.pay)}. Uang yang kamu tambahkan adalah kembaliannya.</div>`;
+    h+=`<b>Kembalian</b><div class="gv">${c.given.map((v,i)=>`<button data-act="take" data-v="${i}" aria-label="Ambil kembali ${rp(v)}">${bill(v)}</button>`).join("")||`<span class="empty">Laci kembalian masih kosong.</span>`}</div>`;
+    h+=`<div class="sum">${rp(c.total)} + ${rp(g)} = ${rp(c.total+g)}</div><div class="fb" role="status">${c.fb}</div>`;
+    h+=`<div class="bills">${[50000,20000,10000,5000,2000,1000].filter(v=>v<=c.change).map(v=>`<button data-act="giv" data-v="${v}" aria-label="Tambah ${rp(v)}">${bill(v)}</button>`).join("")}</div>`;
+    h+=`<div class="two"><button class="btn alt" data-act="clr">Ulang</button><button class="btn ok" data-act="done">Beri kembalian</button></div>`;
+  }else{
+    h+=`<div class="box" style="text-align:center"><p style="margin:0 0 4px">${c.say}</p><div class="sum" style="margin:0">+ ${rp(c.total)} masuk kas</div>${c.tip?`<small style="color:var(--ok)">+ ${rp(c.tip)} tip dari seblak ${c.tip>=2000?"Gold":"Special"}!</small><br>`:""}${c.err?`<small style="color:var(--mut)">Ada ${c.err} salah. Pelanggan ini belum dihitung bintang.</small>`:`<small style="color:var(--ok)">Tanpa salah!</small>`}</div><button class="btn" data-act="next">${G.n+1>=G.N?"Selesai hari ini":"Pelanggan berikutnya"}</button>`;
+  }
+  return h;
+}
+const VOC=[[["bawang putih","garlic",["onion","ginger"]],["bawang merah","shallot",["garlic","leek"]]],[["air","water",["fire","milk"]],["rebus","boil",["fry","cut"]]],[["cabai","chili",["salt","sugar"]],["pedas","spicy",["sweet","cold"]]],[["es","ice",["egg","eye"]],["aduk","stir",["stand","stop"]]]];
+function say2(t){try{const s=window.speechSynthesis;if(!s)return;s.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;s.speak(u)}catch(e){}}
+function mkQ(i){const p=VOC[i][rnd(2)];return{id:p[0],a:p[1],o:shuf([p[1]].concat(p[2]))}}
+function cookH(c){
+  const k=c.ck,n=k.steps.length,done=k.s>=n,ms=k.miss||0,q=ms===0?["Gold","⭐⭐⭐"]:ms<=2?["Special","⭐⭐"]:["Normal","⭐"];
+  let h=`<div class="cook"><div class="pot">${ICON.seblak}</div><div class="cdots">${k.steps.map((x,i)=>`<i class="${i<k.s?"on":i===k.s?"now":""}"></i>`).join("")}</div>`;
+  if(done)return h+`<h2>Matang! 🔥</h2><div class="sum">${q[1]} ${q[0]} seblak</div><small style="color:var(--mut)">Meleset: ${ms}x</small><p>${view==="dapur"&&c.pot?"Your seblak: "+Object.keys(c.pot).filter(k=>c.pot[k]>0).map(k=>c.pot[k]+" "+EN[k]).join(", ")+" · spice "+"🌶️".repeat(c.spice):"Seblak siap diantar ke pembeli."}</p></div><button class="btn ok" data-act="lanjut">${view==="dapur"?"Masak lagi":"Antar &amp; hitung"}</button>`;
+  const st=k.steps[k.s],drink=k.s===3;
+  if(false){if(!k.q)k.q=mkQ(k.s);return h+`<h2>${k.s+1}. ${st[0]}</h2><p>🇬🇧 Apa bahasa Inggris dari <b>“${k.q.id}”</b>?</p><div class="opts">${k.q.o.map(w=>`<button class="btn alt" data-act="eng" data-v="${w}">${w}</button>`).join("")}</div><div class="fb" role="status">${k.msg}</div></div>`}
+  h+=`<h2>${k.s+1}. ${st[0]}</h2><p>${st[1]}</p>`;
+  if(drink)h+=`<div class="sum">${"🥄".repeat(k.t)||"&nbsp;"}</div>`;
+  else h+=`<div class="meter"><b></b><span id="mk" style="left:${k.pos}%"></span></div><p style="font-size:14px;color:var(--mut)">Ketuk saat garis merah di zona hijau</p><div class="hint">${q[1]} <b>${q[0]}</b> · meleset ${ms}x</div>`;
+  h+=`<div class="fb" role="status">${k.msg}</div></div><button class="btn" data-act="cook">${drink?"Aduk!":"Ketuk!"}</button>`;
+  return h;
+}
+let CK_T=null;
+function stopCook(){clearInterval(CK_T);CK_T=null}
+function startCook(){
+  const k=G.c.ck;if(!k||k.s>=k.steps.length||k.s===3)return;
+  CK_T=setInterval(()=>{k.pos+=k.d*1.6;if(k.pos>=100){k.pos=100;k.d=-1}if(k.pos<=0){k.pos=0;k.d=1}const m=$("#mk");if(m)m.style.left=k.pos+"%"},16);
+}
+let B=null;
+function beliInit(){const n=Math.min(3+Math.floor(S.day/3),5);B={need:shuf(MENU.filter(m=>m.id!=="seblak")).slice(0,n).map(m=>({m,q:1+rnd(3)})),bag:{},fb:""};view="belanja";render();window.scrollTo(0,0)}
+function dapurH(){return `<div class="chips"><button class="chip" data-act="home" style="background:var(--acc);color:var(--onacc)">‹ Kembali</button></div>`+cookH(G.c)}
+function belanjaH(){
+  const ks=Object.keys(B.bag).filter(k=>B.bag[k]>0);
+  let h=`<div class="hero"><h2>Belanja ke pasar 🛒</h2><p>Beli bahan untuk hari ke-${S.day}. Ikuti daftar belanja!</p></div>`;
+  h+=`<div class="box"><b>Daftar belanja</b>${B.need.map(x=>`<div class="row">${ICON[x.m.id]}<div class="nm"><b>${x.m.n}</b><small>${rp(x.m.p/2)} per buah</small></div><div class="q">× ${x.q}</div></div>`).join("")}</div>`;
+  h+=`<b>Keranjang</b><div class="tray">${ks.map(k=>`<button class="tc" data-act="brem" data-v="${k}" aria-label="Keluarkan satu ${BY[k].n}">${ICON[k]}<span>× ${B.bag[k]}</span></button>`).join("")||`<span class="empty">Ketuk bahan di bawah untuk memasukkan ke keranjang.</span>`}</div>`;
+  h+=`<div class="menu" style="margin-top:10px">${MENU.filter(m=>m.id!=="seblak").map(m=>`<button class="mi" data-act="badd" data-v="${m.id}">${B.bag[m.id]?`<span class="cnt">${B.bag[m.id]}</span>`:""}${ICON[m.id]}${m.n}<small>${rp(m.p/2)}</small></button>`).join("")}</div>`;
+  h+=`<div class="fb" role="status">${B.fb}</div><button class="btn ok" data-act="bayar">Bayar &amp; buka warung</button><div style="text-align:center"><button class="lnk" data-act="lewat">Lewati belanja</button></div>`;
+  return h;
+}
+const EN={kerupuk:"cracker",makaroni:"macaroni",sosis:"sausage",jamur:"mushroom",bakso:"meatball",ayam:"chicken",mie:"noodles"},SI=Object.keys(EN);
+function beliInit(home){const n=Math.min(2+Math.floor(S.day/3),4);B={home:!!home,need:shuf(SI).slice(0,n).map(id=>({m:BY[id],q:1+rnd(3)})),bag:{},fb:""};view="belanja";render();window.scrollTo(0,0)}
+function belanjaH(){
+  const ks=Object.keys(B.bag).filter(k=>B.bag[k]>0);
+  let h=`<div class="hero"><h2>Market 🛒</h2><p>Read the shopping list in English. Tap the ingredients to fill your basket.</p><small style="color:var(--mut)">Savings: ${rp(S.tab)}</small></div>`;
+  h+=`<div class="box"><b>Shopping list</b>${B.need.map(x=>`<div class="row">${ICON[x.m.id]}<div class="nm"><b>${EN[x.m.id]}</b><small>${rp(x.m.p/2)} each</small></div><div class="q">× ${x.q}</div></div>`).join("")}</div>`;
+  h+=`<b>Basket</b><div class="tray">${ks.map(k=>`<button class="tc" data-act="brem" data-v="${k}" aria-label="Remove one ${EN[k]}">${ICON[k]}<span>× ${B.bag[k]}</span></button>`).join("")||`<span class="empty">Your basket is empty.</span>`}</div>`;
+  h+=`<div class="menu" style="margin-top:10px">${SI.map(id=>`<button class="mi" data-act="badd" data-v="${id}">${B.bag[id]?`<span class="cnt">${B.bag[id]}</span>`:""}${ICON[id]}${EN[id]}<small>${rp(BY[id].p/2)}</small></button>`).join("")}</div>`;
+  h+=`<div class="fb" role="status">${B.fb}</div><button class="btn ok" data-act="bayar">${B.home?"Pay":"Pay &amp; open the shop"}</button><div style="text-align:center"><button class="lnk" data-act="lewat">${B.home?"Back":"Skip"}</button></div>`;
+  return h;
+}
+function pickH(c){
+  const left=id=>(S.stock[id]||0)-(c.pot[id]||0),n=sum(Object.values(c.pot));
+  let h=`<div class="hero"><h2>Cook your seblak 🍜</h2><p>Pick up to 5 ingredients from your stock.</p></div>`;
+  if(!SI.some(id=>(S.stock[id]||0)>0))return h+`<div class="box" style="text-align:center"><p>Your stock is empty. Buy ingredients at the Market first!</p></div><button class="btn" data-act="pasar">Go to Market 🛒</button>`;
+  const ks=Object.keys(c.pot).filter(k=>c.pot[k]>0);
+  h+=`<b>Your pot (${n}/5)</b><div class="tray">${ks.map(k=>`<button class="tc" data-act="pout" data-v="${k}" aria-label="Remove one ${EN[k]}">${ICON[k]}<span>× ${c.pot[k]}</span></button>`).join("")||`<span class="empty">Tap an ingredient below.</span>`}</div>`;
+  h+=`<div class="menu" style="margin-top:10px">${SI.map(id=>`<button class="mi" data-act="pin" data-v="${id}" style="${left(id)<1?"opacity:.4":""}" ${left(id)<1?"disabled":""}>${ICON[id]}${EN[id]}<small>stock: ${left(id)}</small></button>`).join("")}</div>`;
+  h+=`<b>Spice level</b><div class="tabs" style="grid-template-columns:repeat(3,1fr)">${[["Mild",1],["Medium",2],["Hot",3]].map(x=>`<button data-act="spice" data-v="${x[1]}" aria-pressed="${c.spice===x[1]}">${x[0]}</button>`).join("")}</div>`;
+  return h+`<button class="btn ok" data-act="startcook" ${n?"":"disabled"}>Start cooking</button>`;
+}
+function dapurH(){return `<div class="chips"><button class="chip" data-act="home" style="background:var(--acc);color:var(--onacc)">‹ Back</button></div>`+(G.c.phase==="pick"?pickH(G.c):cookH(G.c))}
+Object.assign(ACT,{
+  pasar(){SFX.tap();beliInit(true)},
+  dapur(){G=G||{};G.c={phase:"pick",pot:{},spice:1};view="dapur";SFX.tap();render();window.scrollTo(0,0)},
+  pin(v){const c=G.c;if(sum(Object.values(c.pot))>=5||(S.stock[v]||0)-(c.pot[v]||0)<1)return;c.pot[v]=(c.pot[v]||0)+1;SFX.tap();render()},
+  pout(v){const c=G.c;if(c.pot[v])c.pot[v]--;SFX.tap();render()},
+  spice(v){G.c.spice=+v;SFX.tap();render()},
+  startcook(){const c=G.c;Object.keys(c.pot).forEach(k=>{S.stock[k]=Math.max(0,(S.stock[k]||0)-c.pot[k])});save();c.phase="masak";c.ck={s:0,pos:0,d:1,t:0,msg:"",steps:[["Tumis bumbu","Tumis bawang &amp; cabai sampai wangi"],["Rebus kuah","Masukkan kerupuk &amp; topping ke kuah"],["Tambah pedas","Taburkan cabai biar nendang"]]};SFX.ok();render()},
+  lewat(){if(B.home)ACT.home();else begin()},
+  bayar(){
+    const d=[];B.need.forEach(x=>{const h=B.bag[x.m.id]||0;if(h<x.q)d.push(`Still need ${x.q-h} ${EN[x.m.id]}.`);if(h>x.q)d.push(`Too many ${EN[x.m.id]} (${h-x.q} extra).`)});
+    Object.keys(B.bag).forEach(k=>{if(B.bag[k]>0&&!B.need.some(x=>x.m.id===k))d.push(`${EN[k]} is not on the list.`)});
+    if(d.length){B.fb=d.join(" ");SFX.bad();render();return}
+    const cost=B.need.reduce((a,x)=>a+x.q*x.m.p/2,0);
+    B.need.forEach(x=>{S.stock[x.m.id]=(S.stock[x.m.id]||0)+x.q});S.tab=Math.max(0,S.tab-cost);save();SFX.coin();SFX.win();
+    if(B.home){view="home";render();window.scrollTo(0,0)}else begin()
+  }
+});
+const STORY={
+1:[["Mama","Zafa, today is the first day of our shop.","Zafa, hari ini hari pertama warung kita."],["Zafa","I will cook the best seblak!","Aku akan masak seblak terbaik!"],["Mama","Remember to check your stock.","Ingat cek stok bahanmu."]],
+2:[["Pak Joko","Hello, neighbor! I opened a new shop next door.","Halo, tetangga! Aku buka warung baru di sebelah."],["Zafa","Welcome! My seblak is the tastiest.","Selamat datang! Seblakku yang paling enak."],["Pak Joko","We will see about that!","Kita lihat saja nanti!"]],
+3:[["Lia","Excuse me, is this your shop?","Permisi, ini warungmu?"],["Zafa","Yes! Would you like some seblak?","Iya! Mau seblak?"],["Lia","Yes, please. Not too spicy.","Mau. Jangan terlalu pedas."],["Zafa","Okay, one mild seblak coming up!","Oke, satu seblak tidak pedas segera datang!"]],
+4:[["Mama","Customers love your gold seblak.","Pembeli suka seblak goldmu."],["Mama","Work hard and buy fresh ingredients.","Kerja keras dan beli bahan segar."],["Zafa","I will go to the market again.","Aku akan ke pasar lagi."]],
+5:[["Pak Joko","Your shop is very busy today.","Warungmu ramai sekali hari ini."],["Zafa","Thank you! We cook with love.","Terima kasih! Kami masak dengan cinta."],["Pak Joko","Maybe I can learn from you.","Mungkin aku bisa belajar darimu."],["Zafa","Of course, we can be friends!","Tentu, kita bisa berteman!"]]};
+let ST={i:0};
+const FC={Zafa:["boy",1],Mama:["hijab",0],"Pak Joko":["boy",3],Lia:["girl",2]};
+function storyH(){
+  const sc=STORY[S.day],l=sc[ST.i],f=FC[l[0]]||["boy",0],last=ST.i>=sc.length-1;
+  return `<div class="hero"><h2>Hari ${S.day}</h2></div><div class="cust">${face(f[0],f[1],"happy")}<div class="bub"><b>${l[0]}</b><p style="font-size:20px">${l[1]}</p><small style="color:var(--mut)">${l[2]}</small></div></div><div style="text-align:center"><button class="lnk" data-act="slisten">🔊 Listen</button></div><button class="btn" data-act="snext">${last?"Start the day":"Next ▶"}</button>`;
+}
+function mkCk(ids,drink){
+  let seq=ids.filter(id=>SI.includes(id)).slice(0,3);
+  ["kerupuk","makaroni","sosis"].forEach(id=>{if(seq.length<3&&!seq.includes(id))seq.push(id)});
+  const steps=[["Ulek bumbu","Ketuk cepat sampai penuh!","tap"],["Tumis bumbu","Ketuk saat garis di zona hijau","time"],["Masukkan topping","Ketuk sesuai urutan di atas","seq"],["Rebus kuah","Ketuk saat garis di zona hijau","time"]];
+  if(drink)steps.push(["Aduk minuman","Ketuk 6 kali untuk mengaduk","stir"]);
+  return {s:0,pos:0,d:1,t:0,msg:"",steps,seq,opt:shuf(seq),si:0,pw:0,miss:0};
+}
+function startCook(){
+  const k=G.c.ck;if(!k||k.s>=k.steps.length)return;
+  CK_T=setInterval(()=>{const st=k.steps[k.s],ty=st&&st[2];
+    if(ty==="time"){k.pos+=k.d*1.6;if(k.pos>=100){k.pos=100;k.d=-1}if(k.pos<=0){k.pos=0;k.d=1}const m=$("#mk");if(m)m.style.left=k.pos+"%"}
+    else if(ty==="tap"){k.pw=Math.max(0,k.pw-.3);const b=$("#pw");if(b)b.style.width=k.pw+"%"}},16);
+}
+function cookH(c){
+  const k=c.ck,n=k.steps.length,done=k.s>=n,ms=k.miss||0,q=ms===0?["Gold","⭐⭐⭐"]:ms<=2?["Special","⭐⭐"]:["Normal","⭐"];
+  let h=`<div class="cook"><div class="pot">${ICON.seblak}</div><div class="cdots">${k.steps.map((x,i)=>`<i class="${i<k.s?"on":i===k.s?"now":""}"></i>`).join("")}</div>`;
+  if(done)return h+`<h2>Matang! 🔥</h2><div class="sum">${q[1]} ${q[0]} seblak</div><small style="color:var(--mut)">Meleset: ${ms}x</small><p>${view==="dapur"&&c.pot?"Your seblak: "+Object.keys(c.pot).filter(x=>c.pot[x]>0).map(x=>c.pot[x]+" "+EN[x]).join(", ")+" · spice "+"🌶️".repeat(c.spice):"Seblak siap diantar ke pembeli."}</p></div><button class="btn ok" data-act="lanjut">${view==="dapur"?"Masak lagi":"Antar &amp; hitung"}</button>`;
+  if(k.pause)return h+`<h2>Ulekan jadi! 🥣</h2><p>${k.pause}</p></div><button class="btn ok" data-act="cnext">Lanjut masak</button>`;
+  const st=k.steps[k.s],ty=st[2];
+  h+=`<h2>${k.s+1}. ${st[0]}</h2><p>${st[1]}</p>`;
+  let btn=`<button class="btn" data-act="cook">Ketuk!</button>`;
+  if(ty==="tap"){h+=`<div class="meter"><i id="pw" style="position:absolute;left:0;top:0;bottom:0;width:${k.pw}%;background:var(--sun)"></i></div>`;btn=`<button class="btn" data-act="cook">Ulek! 🥣</button>`}
+  else if(ty==="stir"){h+=`<div class="sum">${"🥄".repeat(k.t)||"&nbsp;"}</div>`;btn=`<button class="btn" data-act="cook">Aduk!</button>`}
+  else if(ty==="seq"){h+=`<div class="tray" style="justify-content:center">${k.seq.map((id,i)=>`<span class="tc" style="${i<k.si?"opacity:.35":""}">${i+1}. ${ICON[id]}${EN[id]}</span>`).join("")}</div>`;btn=`<div class="menu" style="grid-template-columns:repeat(3,1fr)">${k.opt.map(id=>`<button class="mi" data-act="top" data-v="${id}">${ICON[id]}${EN[id]}</button>`).join("")}</div>`}
+  else h+=`<div class="meter"><b></b><span id="mk" style="left:${k.pos}%"></span></div>`;
+  h+=`<div class="hint">${q[1]} <b>${q[0]}</b> · meleset ${ms}x</div><div class="fb" role="status">${k.msg}</div></div>`+btn;
+  return h;
+}
+const _serve=ACT.serve;
+Object.assign(ACT,{
+  serve(){_serve();const c=G.c;if(c.phase==="masak")c.ck=mkCk(c.items.map(x=>x.m.id),c.items.some(x=>x.m.k==="minum"));c.ck.steps=c.ck.steps.filter(x=>x[2]==="tap"||x[2]==="stir"||x[0]==="Rebus kuah");render()},
+  startcook(){const c=G.c;Object.keys(c.pot).forEach(k=>{S.stock[k]=Math.max(0,(S.stock[k]||0)-c.pot[k])});save();c.phase="masak";c.ck=mkCk(Object.keys(c.pot).filter(k=>c.pot[k]>0),false);SFX.ok();render()},
+  cook(){
+    const k=G.c.ck,ty=k.steps[k.s][2],s0=k.s;if(k.pause||Date.now()<(k.lock||0))return;
+    if(ty==="tap"){k.pw+=9;SFX.tap();if(k.pw<100){const b=$("#pw");if(b)b.style.width=k.pw+"%";return}k.s++;k.pw=0;k.msg="";k.pause="Bumbu sudah halus. Lanjut: "+k.steps[k.s][0].toLowerCase()+".";k.plock=Date.now()+900;SFX.ok()}
+    else if(ty==="stir"){k.t++;SFX.tap();if(k.t>=6){k.s++;k.t=0;k.msg="";SFX.ok()}}
+    else if(k.pos>=35&&k.pos<=65){k.s++;k.msg="Pas! Mantap!";k.pos=0;SFX.ok()}
+    else{k.msg="Meleset, coba lagi!";k.miss++;SFX.bad()}
+    if(k.s!==s0)k.lock=Date.now()+600;
+    render();
+  },
+  top(v){const k=G.c.ck;if(Date.now()<(k.lock||0))return;if(v===k.seq[k.si]){k.si++;SFX.tap();if(k.si>=k.seq.length){k.s++;k.si=0;k.msg="Urutan benar!";k.lock=Date.now()+600;SFX.ok()}}else{k.msg="Salah urutan!";k.miss++;SFX.bad()}render()},
+  snext(){const sc=STORY[S.day];SFX.tap();ST.i++;if(ST.i>=sc.length){beginDay();return}render()},
+  slisten(){const l=STORY[S.day][ST.i];say2(l[1])}
+});
+function ulekH(c){
+  const k=c.ck,box=`<div class="box"><b>Pesanan pembeli</b>${c.items.map(x=>`<div class="row">${ICON[x.m.id]}<div class="nm"><b>${x.m.n}</b></div><div class="q">× ${x.q}</div></div>`).join("")}</div>`;
+  if(c.ulekDone)return `<div class="cook"><div class="pot">${ICON.seblak}</div><h2>Bumbu halus! 🥣</h2><p>Sekarang pilih topping sesuai pesanan.</p></div>${box}<button class="btn ok" data-act="ulekok">Pilih topping</button>`;
+  return `<div class="cook"><div class="pot">${ICON.seblak}</div><h2>Ulek bumbu</h2><p>Ketuk cepat sampai penuh!</p><div class="meter"><i id="pw" style="position:absolute;left:0;top:0;bottom:0;width:${k.pw}%;background:var(--sun)"></i></div></div>${box}<button class="btn" data-act="ulek">Ulek! 🥣</button>`;
+}
+Object.assign(ACT,{
+  ulek(){const c=G.c,k=c.ck;k.pw+=9;SFX.tap();if(k.pw<100){const b=$("#pw");if(b)b.style.width=k.pw+"%";return}k.pw=0;c.ulekDone=true;c.lk=Date.now()+800;SFX.ok();render()},
+  ulekok(){const c=G.c;if(Date.now()<(c.lk||0))return;c.phase="ambil";c.ck=null;c.ulekDone=false;SFX.ok();render()}
+});
+Object.assign(ACT,{cnext(){const k=G.c.ck;if(Date.now()<(k.plock||0))return;k.pause=null;k.pos=0;k.d=1;SFX.ok();render()}});
+function endH(){
+  const st=G.stars,pass=st>0;
+  return `<div class="hero"><h2>Hari ${S.day} selesai!</h2></div><div class="stars">${[1,2,3].map(i=>star(i<=st)).join("")}</div>
+<div class="box" style="text-align:center"><p>Tanpa salah: <b>${G.good} dari ${G.N}</b> pelanggan</p><p>Uang kas: <b>${rp(G.kas)}</b></p>${pass?`<p>Kas masuk tabungan. Tabungan: <b>${rp(S.tab)}</b></p><p>Besok pesanan lebih banyak.</p>`:`<p>Butuh minimal 4 pelanggan tanpa salah untuk lanjut. Ayo coba lagi!</p>`}</div>
+${pass?`<button class="btn" data-act="nextday">Hari berikutnya</button>`:""}
+<div style="margin-top:8px"><button class="btn alt" data-act="play">Ulangi hari ${S.day}</button></div>
+<div style="text-align:center"><button class="lnk" data-act="home">Kembali ke menu</button></div>`;
+}
+function shopH(){
+  return `<div class="hero"><h2>Toko Hiasan</h2><p>Tabungan: <b>${rp(S.tab)}</b></p></div><div class="box">`+SHOP.map(x=>{
+    const has=S.own.includes(x.id),need=x.p-S.tab;
+    return `<div class="row">${DI[x.id]}<div class="nm"><b>${x.n}</b><small>${rp(x.p)}</small></div>${has?`<b style="color:var(--ok)">Dimiliki</b>`:need<=0?`<button class="btn" style="width:auto;padding:8px 18px;font-size:17px;min-height:44px" data-act="buy" data-v="${x.id}">Beli</button>`:`<small style="text-align:right">Kurang ${rp(need)}</small>`}</div>`;
+  }).join("")+`</div><p>Lulus satu hari, uang kasnya masuk tabungan. Hiasan yang dibeli tampil di atas warungmu.</p><button class="btn alt" data-act="home">Kembali</button>`;
+}
+function lapH(){
+  const SK=[["ambil","Mengambil pesanan"],["total","Menjumlah dan mengali (total belanja)"],["kembali","Kembalian (mengurang)"]];
+  const rows=SK.map(([k,l])=>{
+    const e=S.st[k],n=e.b+e.s;
+    if(!n)return `<div class="hint"><b>${l}</b><br>Belum dicoba</div>`;
+    const p=Math.round(100*e.b/n),col=p>=80?"var(--ok)":p>=60?"#e0a100":"var(--bad)";
+    return `<div class="hint"><b>${l}</b><br>Benar ${e.b} · salah ${e.s} · ketepatan ${p}%<div class="bar"><i style="width:${p}%;background:${col}"></i></div></div>`;
+  }).join("");
+  const weak=SK.filter(([k])=>{const e=S.st[k],n=e.b+e.s;return n>=5&&e.b/n<.8}).map(x=>x[1]);
+  const stars=Object.keys(S.stars).sort((x,y)=>x-y).map(d=>"Hari "+d+": "+S.stars[d]+" bintang").join(" · ")||"Belum ada hari yang lulus";
+  return `<div class="hero"><h2>Laporan Orang Tua</h2></div><p>Sedang di hari ${S.day} · Tabungan ${rp(S.tab)}</p><p>${stars}</p>`+
+    (weak.length?`<div class="hint"><b>Perlu dilatih:</b> ${weak.join(", ")}.</div>`:`<div class="hint">Belum ada topik yang jelas perlu dilatih. Penilaian muncul setelah minimal 5 jawaban per topik.</div>`)+rows+
+    `<p style="font-size:14px;color:var(--mut)">Data tersimpan di browser perangkat ini saja.</p>`+
+    (ask?`<div class="hint"><b>Hapus semua progres?</b> Hari, tabungan, dan hiasan akan kembali dari awal.</div><div class="two"><button class="btn alt" data-act="no">Batal</button><button class="btn" data-act="reset2">Ya, hapus</button></div>`:`<div style="text-align:center"><button class="lnk" data-act="reset1">Hapus semua progres</button></div>`)+
+    `<button class="btn alt" data-act="home" style="margin-top:8px">Kembali</button>`;
+}
+function render(){
+  $("#dec").innerHTML=SHOP.filter(x=>S.own.includes(x.id)).map(x=>DI[x.id]).join("");
+  stopScene();stopCook();
+  $("#view").innerHTML=view==="play"?playH():view==="end"?endH():view==="shop"?shopH():view==="belanja"?belanjaH():view==="dapur"?dapurH():view==="story"?storyH():view==="lap"?lapH():homeH();
+  if(view==="play"&&G&&G.c&&G.c.phase==="selesai")startScene();
+  if((view==="play"||view==="dapur")&&G&&G.c&&(G.c.phase==="masak"||G.c.phase==="ulek"))startCook();
+}
+load();render();
+</script>
+<script>
+/* Pas-kan seluruh game ke layar (tanpa scroll) */
+(function(){
+  var app=document.getElementById("app"),raf=0;
+  function fit(){
+    raf=0;
+    app.style.transform="none";
+    var b=document.body,cs=getComputedStyle(b);
+    var availH=b.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    var availW=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    var h=app.offsetHeight,w=app.offsetWidth;
+    if(!h||!w)return;
+    var s=Math.min(availH/h,availW/w);
+    var dy=Math.max(0,(availH-h*s)/2);
+    app.style.transform="translateY("+dy+"px) scale("+s+")";
+  }
+  function req(){if(!raf)raf=requestAnimationFrame(fit)}
+  addEventListener("resize",req);addEventListener("orientationchange",req);
+  var mo=new MutationObserver(req);
+  ["view","dec","awn"].forEach(function(id){mo.observe(document.getElementById(id),{childList:true,subtree:true,characterData:true})});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(req);
+  addEventListener("load",req);
+  req();
+})();
+</script>
+
+</body></html>
