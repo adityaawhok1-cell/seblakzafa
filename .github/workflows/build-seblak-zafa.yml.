@@ -1,0 +1,51 @@
+name: Build Seblak Zafa APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Siapkan proyek Capacitor
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+          npm init -y
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npx cap init "Seblak Zafa" com.seblakzafa.app --web-dir=www
+          npx cap add android
+          npx cap sync android
+
+      - name: Layar penuh + portrait
+        run: |
+          STYLES=android/app/src/main/res/values/styles.xml
+          sed -i 's|<item name="android:background">@null</item>|&\n        <item name="android:windowFullscreen">true</item>\n        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>|' "$STYLES"
+          MANIFEST=android/app/src/main/AndroidManifest.xml
+          sed -i 's|<activity|<activity android:screenOrientation="portrait"|' "$MANIFEST"
+          cat "$STYLES"
+
+      - name: Build APK debug
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SeblakZafa-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
